@@ -223,13 +223,33 @@ async def on_command(ctx, user: discord.Member):
 @bot.command(name='stats', help='Gives you the Status of the bot and server')
 async def on_command(ctx):
     #if ctx.message.author.guild_permissions.administrator:
-        embed = discord.Embed(title="Blackmagic Bot Statistics", color=0xff8000)
-        embed.add_field(name='System Usage:', value=f'CPU: {psutil.cpu_percent()} RAM: {psutil.virtual_memory()[2]}')
-        embed.add_field(name='Codeshare:', value='https://github.com/timhaettich/bmd')
-        embed.add_field(name='Version::', value='v1.0.0 This bot is still in Development.')
-        embed.add_field(name='Member count:', value='{0}'.format(bot.get_guild(479297254528647188).member_count),inline="false")
-        embed.add_field(name='Bot written by:', value='This bot was written by @TimothyLH, additional features were contributed by @dave. This bot is based on discord.py', inline="false")
-        await ctx.send(embed=embed)
+    embed = discord.Embed(title="Blackmagic Bot Statistics", color=0xff8000)
+    embed.add_field(name='System Usage:', value=f'CPU: {psutil.cpu_percent()} RAM: {psutil.virtual_memory()[2]}')
+    embed.add_field(name='Codeshare:', value='https://github.com/timhaettich/bmd')
+    embed.add_field(name='Version::', value='v1.0.0 This bot is still in Development.')
+    embed.add_field(name='Member count:', value='{0}'.format(bot.get_guild(479297254528647188).member_count),inline="false")
+    embed.add_field(name='Bot written by:', value='This bot was written by @TimothyLH, additional features were contributed by @dave. This bot is based on discord.py', inline="false")
+    await ctx.send(embed=embed)
+
+#--- One time stuff --------------------------------------------------------------------------------------------------------------------------------------------
+@bot.command(name='role-msg')
+async def on_command(ctx):
+    message = ":clapper: You can assign yourself a role here :clapper:\n"+
+                "This will help others to quickly identify your interest and knowledge.\n\n"+
+                "Your occupation:\n"+
+                "📢  Director\n"+
+                "💰  Producer\n"+
+                "🎥 Camera Department\n"+
+                "🖥️  Post Production\n"+
+                "✍️  Writer\n"+
+                "👨  Hobbyist\n\n"+
+                "Your gear:\n"+
+                "🖥️  Post Production Gear\n"+
+                "🎥  Camera Gear\n"+
+                "📡  Broadcasting\n\n"+
+                "*Those roles are not pingable. You will not receive any additional pings*"
+    ctx.send(message)
+
 
 #---------------------------------------------------------------------------------------------------------------------------------------------------------------
 bot.run(TOKEN)
