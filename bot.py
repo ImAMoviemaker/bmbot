@@ -248,7 +248,7 @@ async def on_command(ctx):
                 "🎥  Camera Gear\n"
                 "📡  Broadcasting\n\n"
                 "*Those roles are not pingable. You will not receive any additional pings*")
-    ctx.send(message)
+    await ctx.send(message)
 
 
 #---------------------------------------------------------------------------------------------------------------------------------------------------------------
