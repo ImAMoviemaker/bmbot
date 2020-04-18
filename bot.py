@@ -81,6 +81,14 @@ async def on_command(ctx):
     ]
     await ctx.channel.send(random.choice(replays))
 
+#--- Swiss Text ------------------------------------------------------------------------------------------------------------------------------------------------
+@bot.command(name="swiss", hidden="true")
+async def on_command(ctx):
+    swissgerman = [
+        "Huere Michi Grind", "Schafsäcku", "Degenerierts Layer-8-Phänomen", "Spezifikations-GAU", "Grachteschnäpfe", "Gopfverdammi", "Shit!", "Scheisse", "Dummi Chueh", "Gopferdecku", "Schofseckel", "Gwaggli", "Gumslä", "Sürel", "Habasch", "Halbschue", "Täschbäsä", "Chotzbrocke", "Totsch", "Tschumpel", "Säuniggel"
+    ]
+    await ctx.channel.send(random.choice(swissgerman))
+
 #--- Rules -----------------------------------------------------------------------------------------------------------------------------------------------------
 @bot.command(name='rule', help='Displays the selected rule. Do not give a number to get a general warning. Give a username to warn a specific user.')
 async def on_command(ctx, id: int):
