@@ -50,11 +50,11 @@ async def on_ready():
 #--- Welcome Message -------------------------------------------------------------------------------------------------------------------------------------------
 @bot.event
 async def on_member_join(member):
-    await bot.get_channel(CHANNEL_TERMINAL).send(
+    await bot.get_channel(479770860601737216).send(
         '{0} {1.mention}, welcome to the Blackmagic Community! Please read the {2}. Type _!bmd help_ and _!bmd channels_ to get a quick introduction'
-        .format(discord.utils.get(bot.get_guild(GUILD).emojis, name='bmd'),
+        .format(discord.utils.get(bot.get_guild(479297254528647188).emojis, name='bmd'),
         member,
-        bot.get_channel(HELP).mention)
+        bot.get_channel(479298119255851029).mention)
     )
     await member.create_dm()
     await member.dm_channel.send(
@@ -76,7 +76,7 @@ async def on_member_join(member):
 async def on_command(ctx):
     replays = [
         "Pong!", "No! I'm better than just writting 'Pong'", "Pong... ee. Hah you didn't expect this one. No seriously get yourself a warm blanket, it's cold outside!", "Stop pinging me! I want to sleep", "Dude stop pinging me! I'm presenting the new Blackmagic Not Anymore Pocket Cinema Camera 8k",
-        f"Better ping gooogle than me. My current ping to Google is: {random.randint(1,10)}", "You expected me to say Pong! And so I did...", f"Pingreeeeee {discord.utils.get(bot.get_guild(GUILD).emojis, name='PeepoPing')}",
+        f"Better ping gooogle than me. My current ping to Google is: {random.randint(1,10)}", "You expected me to say Pong! And so I did...", f"Pingreeeeee {discord.utils.get(bot.get_guild(479297254528647188).emojis, name='PeepoPing')}",
         "Ping? Ping! I will tell you who I ping next!", "Ping, Pong, Ping, Pong, Ping, Pong, Ping, Pong... That's the last Ping Pong Championship summarized", "Ping!", "async def ping(ctx):\n    await ctx.channel.send('Pong')"
     ]
     await ctx.channel.send(random.choice(replays))
