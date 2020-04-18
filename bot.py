@@ -231,11 +231,20 @@ async def on_command(ctx):
     embed.add_field(name='Bot written by:', value='This bot was written by @TimothyLH, additional features were contributed by @dave. This bot is based on discord.py', inline="false")
     await ctx.send(embed=embed)
 
+#--- Auto Commands --------------------------------------------------------------------------------------------------------------------------------------------
+#--- Role asigning --------------------------------------------------------------------------------------------------------------------------------------------
+bot.event
+async def on_raw_reaction_add(ctx):
+    if(ctx.message_id == 701068310019571824 || ctx.message_id == 701071925656551489):
+        #Assign role to user
+        print(ctx.member.name)
+        print(ctx.emoji)
+        
 #--- One time stuff --------------------------------------------------------------------------------------------------------------------------------------------
-@bot.command(name='role-msg')
+"""@bot.command(name='role-msg')
 async def on_command(ctx):
     message1 = "🎬 You can assign yourself a role here 🎬\nThis will help others to quickly identify your interest and knowledge.\n\nYour occupation:\n📢  Director\n💰  Producer\n🎥 Camera Department\n🖥️  Post Production\n✍️  Writer\n👨  Hobbyist\nJust click the corresponding emoji below."
     message2 = ".\n\nYour gear:\n🖥️  Post Production Gear\n🎥  Camera Gear\n📡  Broadcasting\nJust click the corresponding emoji below."
-    await ctx.send(message2)
+    await ctx.send(message2)"""
 #---------------------------------------------------------------------------------------------------------------------------------------------------------------
 bot.run(TOKEN)
