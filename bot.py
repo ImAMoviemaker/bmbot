@@ -30,6 +30,7 @@ TOKEN = os.getenv('DISCORD_TOKEN')
 GUILD = os.getenv('DISCORD_GUILD')
 HELP = os.getenv('CHANNEL_HELP')
 TERMINAL = os.getenv('CHANNEL_TERMINAL')
+print(GUILD)
 
 
 #Create bot
