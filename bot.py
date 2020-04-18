@@ -236,7 +236,7 @@ async def on_command(ctx):
 bot.event
 async def on_raw_reaction_add(payload):
         #Assign role to user
-        def role = bot.get_guild(479297254528647188).get_role(701006546645155870)
+        role = bot.get_guild(479297254528647188).get_role(701006546645155870)
         await payload.member.add_roles(role)
 
 #--- One time stuff --------------------------------------------------------------------------------------------------------------------------------------------
