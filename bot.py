@@ -279,6 +279,49 @@ async def on_raw_reaction_add(payload):
             await member.add_roles(role)
             print("done")
 
+
+@bot.event
+async def on_raw_reaction_remove(payload):
+    if payload.message_id == 701071925656551489:
+        map = {
+            '🖥️':701007112016363540,
+            '🎥':701007219306528810,
+            '📡':701007421778296852
+        }
+        print(payload.emoji.name)
+        print(map[payload.emoji.name])
+        # Find a role corresponding to the Emoji name.
+        guild_id = payload.guild_id
+        guild = discord.utils.find(lambda g : g.id == guild_id, bot.guilds)
+
+        role = bot.get_guild(479297254528647188).get_role(map[payload.emoji.name]))
+
+        if role is not None:
+            member = discord.utils.find(lambda m : m.id == payload.user_id, guild.members)
+            await member.remove_roles(role)
+            print("done")
+    if payload.message_id == 701068310019571824:
+        map = {
+            '📢':701006546645155870,
+            '💰':701006651557412864,
+            '🎥':701006754430976011,
+            '🖥️':701006696717353091,
+            '✍️':701006801981931640,
+            '👨':701006871015850006,
+        }
+        print(payload.emoji.name)
+        print(map[payload.emoji.name])
+        # Find a role corresponding to the Emoji name.
+        guild_id = payload.guild_id
+        guild = discord.utils.find(lambda g : g.id == guild_id, bot.guilds)
+
+        role = bot.get_guild(479297254528647188).get_role(map[payload.emoji.name]))
+
+        if role is not None:
+            member = discord.utils.find(lambda m : m.id == payload.user_id, guild.members)
+            await member.remove_roles(role)
+            print("done")
+
 #--- One time stuff --------------------------------------------------------------------------------------------------------------------------------------------
 """@bot.command(name='role-msg')
 async def on_command(ctx):
