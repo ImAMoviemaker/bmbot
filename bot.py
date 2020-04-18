@@ -22,6 +22,8 @@ from bmd_crawler.interface import allVisibleResolveVersionNames,getResolveVersio
 from functions import channel_help
 from const import *
 
+print('Trying to start')
+
 #Load Bot Token
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
@@ -33,7 +35,7 @@ TERMINAL = os.getenv('CHANNEL_TERMINAL')
 #Create bot
 from discord.ext import commands
 
-bot = commands.Bot(command_prefix='!bmd')
+bot = commands.Bot(command_prefix='!bmd ')
 
 #--- START UP CODE ---------------------------------------------------------------------------------------------------------------------------------------------
 @bot.event
