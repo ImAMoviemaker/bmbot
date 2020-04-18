@@ -234,11 +234,9 @@ async def on_command(ctx):
 #--- One time stuff --------------------------------------------------------------------------------------------------------------------------------------------
 @bot.command(name='role-msg')
 async def on_command(ctx):
-    message1 = "🎬 You can assign yourself a role here 🎬\nThis will help others to quickly identify your interest and knowledge.\n\nYour occupation:\n📢  Director\n💰  Producer\n🎥 Camera Department\n🖥️  Post Production\n✍️  Writer\n👨  Hobbyist"
-    message2 = "Your gear:\n🖥️  Post Production Gear\n🎥  Camera Gear\n📡  Broadcasting\n\nThose roles are not pingable. You will not receive any additional pings"
+    message1 = "🎬 You can assign yourself a role here 🎬\nThis will help others to quickly identify your interest and knowledge.\n\nYour occupation:\n📢  Director\n💰  Producer\n🎥 Camera Department\n🖥️  Post Production\n✍️  Writer\n👨  Hobbyist\nJust click the corresponding emoji below."
+    message2 = "\n\nYour gear:\n🖥️  Post Production Gear\n🎥  Camera Gear\n📡  Broadcasting\n\nThose roles are not pingable. You will not receive any additional pings\nJust click the corresponding emoji below."
     await ctx.send(message1)
     await ctx.send(message2)
-
-
 #---------------------------------------------------------------------------------------------------------------------------------------------------------------
 bot.run(TOKEN)
