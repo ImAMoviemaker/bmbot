@@ -258,7 +258,7 @@ async def on_raw_reaction_add(payload):
             member = discord.utils.find(lambda m : m.id == payload.user_id, guild.members)
             await member.add_roles(role)
             print("done")
-    if payload.message.id == 701071925656551489:
+    if payload.message_id == 701071925656551489:
         map = {
             '🖥️':701007112016363540,
             '🎥':701007219306528810,
