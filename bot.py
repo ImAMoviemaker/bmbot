@@ -20,6 +20,7 @@ from dotenv import load_dotenv
 #Import Custom Code
 from bmd_crawler.interface import allVisibleResolveVersionNames,getResolveVersionData,getResolveLatestData,allResolveVersionNames,allVisibleFusionVersionNames,getFusionVersionData,getFusionLatestData,allFusionVersionNames
 from functions import channel_help
+from const import *
 
 #Load Bot Token
 load_dotenv()
@@ -42,11 +43,11 @@ async def on_ready():
 #--- Welcome Message -------------------------------------------------------------------------------------------------------------------------------------------
 @bot.event
 async def on_member_join(member):
-    await bot.get_channel(os.getenv('CHANNEL_TERMINAL')).send(
+    await bot.get_channel(CHANNEL_TERMINAL).send(
         '{0} {1.mention}, welcome to the Blackmagic Community! Please read the {2}. Type _!bmd help_ and _!bmd channels_ to get a quick introduction'
-        .format(discord.utils.get(bot.get_guild(os.getenv('DISCORD_GUILD')).emojis, name='bmd'),
+        .format(discord.utils.get(bot.get_guild(DISCORD_GUILD).emojis, name='bmd'),
         member,
-        bot.get_channel(os.getenv('CHANNEL_HELP')).mention)
+        bot.get_channel(CHANNEL_HELP).mention)
     )
     await member.create_dm()
     await member.dm_channel.send(
@@ -85,7 +86,7 @@ async def on_command(ctx, id: int):
     elif id == 4:
         msg = '4️⃣ No spamming of any kind. Please be polite to other users and do not be disruptive. Includes but is not limited to nicknames, text, emoji, links, images, EXCESSIVE CAPS, censor dodging (eg. use of spoilers), and spam mentioning @ role/user. Do not pointlessly ping Official Blackmagic Design Staff members for questions others can answer.'
     elif id == 5:
-        msg = '5️⃣ Content sharing is allowed.\nPost your work in {0} \nPost your gear in {1} \nKeep memes in {2} strictly.'.format(bot.get_channel(624591866817413139).mention, bot.get_channel(624591866817413139).mention, bot.get_channel(624591866817413139).mention)
+        msg = '5️⃣ Content sharing is allowed.\nPost your work in {0} \nPost your gear in {1} \nKeep memes in {2} strictly.'.format(bot.get_channel(479297477590384665).mention, bot.get_channel(479297610851811329).mention, bot.get_channel(654069173831335937).mention)
     elif id == 6:
         msg = '6️⃣ No loopholes. A loophole is when you try to find technicalities in the rules so you don\'t get punished for what you did.  If you ever find any loopholes then report them to a staff member to be fixed.  Loopholes will not be tolerated and are strictly prohibited.'
     elif id == 7:
