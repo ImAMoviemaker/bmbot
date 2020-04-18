@@ -242,7 +242,27 @@ async def on_raw_reaction_add(payload):
             '🎥':701006754430976011,
             '🖥️':701006696717353091,
             '✍️':701006801981931640,
-            '👨':701006871015850006
+            '👨':701006871015850006,
+        }
+        print(payload.emoji.name)
+        print(map[payload.emoji.name])
+        # Find a role corresponding to the Emoji name.
+        guild_id = payload.guild_id
+        guild = discord.utils.find(lambda g : g.id == guild_id, bot.guilds)
+
+        role = bot.get_guild(479297254528647188).get_role(map[payload.emoji.name])
+
+        if role is not None:
+            print(role.name + " was found!")
+            print(role.id)
+            member = discord.utils.find(lambda m : m.id == payload.user_id, guild.members)
+            await member.add_roles(role)
+            print("done")
+    if payload.message.id == 701071925656551489:
+        map = {
+            '🖥️':701007112016363540,
+            '🎥':701007219306528810,
+            '📡':701007421778296852
         }
         print(payload.emoji.name)
         print(map[payload.emoji.name])
