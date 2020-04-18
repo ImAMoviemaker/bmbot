@@ -235,11 +235,11 @@ async def on_command(ctx):
 #--- Role asigning --------------------------------------------------------------------------------------------------------------------------------------------
 bot.event
 async def on_raw_reaction_add(ctx):
-    if(ctx.message_id == 701068310019571824 || ctx.message_id == 701071925656551489):
+    if ctx.message_id == 701068310019571824 or ctx.message_id == 701071925656551489:
         #Assign role to user
         print(ctx.member.name)
         print(ctx.emoji)
-        
+
 #--- One time stuff --------------------------------------------------------------------------------------------------------------------------------------------
 """@bot.command(name='role-msg')
 async def on_command(ctx):
