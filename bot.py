@@ -236,12 +236,15 @@ async def on_command(ctx):
 @bot.event
 async def on_raw_reaction_add(payload):
     if payload.message_id == 701068310019571824:
+        map = {
+            'loudspeaker'
+        }
         print(payload.emoji.name)
         # Find a role corresponding to the Emoji name.
         guild_id = payload.guild_id
         guild = discord.utils.find(lambda g : g.id == guild_id, bot.guilds)
 
-        role = discord.utils.find('Director', guild.roles)
+        role = bot.get_guild(479297254528647188).get_role(701006546645155870)
 
         if role is not None:
             print(role.name + " was found!")
