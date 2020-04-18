@@ -233,11 +233,22 @@ async def on_command(ctx):
 
 #--- Auto Commands --------------------------------------------------------------------------------------------------------------------------------------------
 #--- Role asigning --------------------------------------------------------------------------------------------------------------------------------------------
-bot.event
+@bot.event
 async def on_raw_reaction_add(payload):
-        #Assign role to user
-        role = bot.get_guild(479297254528647188).get_role(701006546645155870)
-        await payload.member.add_roles(role)
+    if payload.message_id == 701068310019571824:
+        print(payload.emoji.name)
+        # Find a role corresponding to the Emoji name.
+        guild_id = payload.guild_id
+        guild = discord.utils.find(lambda g : g.id == guild_id, bot.guilds)
+
+        role = discord.utils.find('Director', guild.roles)
+
+        if role is not None:
+            print(role.name + " was found!")
+            print(role.id)
+            member = discord.utils.find(lambda m : m.id == payload.user_id, guild.members)
+            await member.add_roles(role)
+            print("done")
 
 #--- One time stuff --------------------------------------------------------------------------------------------------------------------------------------------
 """@bot.command(name='role-msg')
