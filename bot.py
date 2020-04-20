@@ -42,7 +42,7 @@ from discord.ext import commands
 bot = commands.Bot(command_prefix=os.getenv('BOT_PREFIX') + " ")
 
 #Get Help functions
-f = HelpFunctions(bot)
+f = HelpFunctions(bot,GUILD)
 
 #--- START UP CODE ---------------------------------------------------------------------------------------------------------------------------------------------
 @bot.event

@@ -12,8 +12,9 @@ import discord
 
 class HelpFunctions:
     #Constructor
-    def __init__(self,bot):
+    def __init__(self,bot,guild):
         self.bot = bot
+        self.guild = guild
 
     #Function to generate channel help embed
     def channel_help(self):
@@ -26,4 +27,4 @@ class HelpFunctions:
 
     #Function to get emojis
     def emoji(self,name):
-        return discord.utils.get(self.bot.get_guild(guild).emojis, name=name)
+        return discord.utils.get(self.bot.get_guild(self.guild).emojis, name=name)
