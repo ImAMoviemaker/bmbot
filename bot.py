@@ -19,7 +19,7 @@ from dotenv import load_dotenv
 
 #Import Custom Code
 from bmd_crawler.interface import allVisibleResolveVersionNames,getResolveVersionData,getResolveLatestData,allResolveVersionNames,allVisibleFusionVersionNames,getFusionVersionData,getFusionLatestData,allFusionVersionNames
-from functions import channel_help
+from functions import channel_help,emoji
 from const import *
 
 print('Trying to start')
@@ -38,6 +38,8 @@ print(GUILD)
 #Create bot
 from discord.ext import commands
 
+#Get help-functions
+def f = HelpFunction()
 bot = commands.Bot(command_prefix=os.getenv('BOT_PREFIX') + " ")
 
 #--- START UP CODE ---------------------------------------------------------------------------------------------------------------------------------------------
@@ -54,7 +56,7 @@ async def on_ready():
 async def on_member_join(member):
     await bot.get_channel(RULES).send(
         '{0} {1.mention}, welcome to the Blackmagic Community! Please read the rules and assign yourself {2}. Type _!bmd help_ and _!bmd channels_ to get a quick introduction'
-        .format(emoji(GUILD,'bmd')),
+        .format(emoji(GUILD,'bmd'),
         member,
         bot.get_channel(ROLES).mention),
         delete_after = float("30")
@@ -220,6 +222,7 @@ async def on_command(ctx, user: discord.Member):
 
     ]
     await ctx.send(random.choice(compliments) + " " + user.mention)
+    await ctx.
 
 #--- Give CPU and RAM Monitoring -------------------------------------------------------------------------------------------------------------------------------
 @bot.command(name='stats', help='Gives you the Status of the bot and server')

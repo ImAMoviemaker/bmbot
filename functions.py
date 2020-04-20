@@ -20,6 +20,7 @@ def channel_help():
 
 
 #Function to get emojis
-def emoji(def guild, def name){
+def emoji(guild,name):
+    global discord
+    global bot
     return discord.utils.get(bot.get_guild(guild).emojis, name=name)
-}
