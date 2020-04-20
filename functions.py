@@ -22,7 +22,7 @@ class HelpFunctions:
         embed.set_footer(text="Contact Staff for more informations")
         for ch in self.bot.get_guild(self.guild).channels:
             if(isinstance(ch,discord.TextChannel)):
-                embed.add_field(ch.name, value=ch.topic)
+                embed.add_field(name=ch.name, value=ch.topic)
         return embed
 
 
