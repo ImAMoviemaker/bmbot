@@ -20,9 +20,10 @@ class HelpFunctions:
     def channel_help(self):
         embed = discord.Embed(title="Channel Overview", description="See what each channel is for below:", color=0xff8000)
         embed.set_footer(text="Contact Staff for more informations")
-        for ch in self.bot.get_guild(self.guild).channels:
+        embed.add_field(name="Out of order", value="This feature is currently deactivated.")
+        """for ch in self.bot.get_guild(self.guild).channels:
             if ch.name and ch.topic:
-                embed.add_field(name=ch.name, value=ch.topic)
+                embed.add_field(name=ch.name, value=ch.topic)"""
         return embed
 
 
