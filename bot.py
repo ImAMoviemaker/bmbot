@@ -27,16 +27,18 @@ print('Trying to start')
 #Load Bot Token
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
-GUILD = os.getenv('DISCORD_GUILD')
-HELP = os.getenv('CHANNEL_HELP')
-TERMINAL = os.getenv('CHANNEL_TERMINAL')
+GUILD = int(os.getenv('DISCORD_GUILD'))
+RULES = int(os.getenv('CHANNEL_RULES'))
+TERMINAL = int(os.getenv('CHANNEL_TERMINAL'))
+ROLES = int(os.getenv('CHANNEL_ROLES'))
+
 print(GUILD)
 
 
 #Create bot
 from discord.ext import commands
 
-bot = commands.Bot(command_prefix='!bmd ')
+bot = commands.Bot(command_prefix=os.getenv('BOT_PREFIX') + " ")
 
 #--- START UP CODE ---------------------------------------------------------------------------------------------------------------------------------------------
 @bot.event
@@ -50,25 +52,17 @@ async def on_ready():
 #--- Welcome Message -------------------------------------------------------------------------------------------------------------------------------------------
 @bot.event
 async def on_member_join(member):
-    await bot.get_channel(479770860601737216).send(
-        '{0} {1.mention}, welcome to the Blackmagic Community! Please read the {2}. Type _!bmd help_ and _!bmd channels_ to get a quick introduction'
-        .format(discord.utils.get(bot.get_guild(479297254528647188).emojis, name='bmd'),
+    await bot.get_channel(RULES).send(
+        '{0} {1.mention}, welcome to the Blackmagic Community! Please read the rules and assign yourself {2}. Type _!bmd help_ and _!bmd channels_ to get a quick introduction'
+        .format(emoji(GUILD,'bmd')),
         member,
-        bot.get_channel(479298119255851029).mention)
+        bot.get_channel(ROLES).mention),
+        delete_after = float("30")
     )
     await member.create_dm()
     await member.dm_channel.send(
         f'Hi {member.name}, welcome to the Blackmagic Community! Please note that we use diffrent channels for diffrent things, you can see an overview below:'
     )
-    embed = discord.Embed(title="Channel Overview", description="See what each channel is for below:", color=0xff8000)
-    embed.set_footer(text="Contact Staff for more informations")
-    embed.add_field(name="#general", value=f"Talk about anything related to Filmmaking and DaVinci Resolve. Pretty much anything not matching the other channels can be discussed here")
-    embed.add_field(name="#davinci-resolve-help", value=f"Ask questions about DaVinci Resolve and Related Software (Fusion, Fairlight...) in here")
-    embed.add_field(name="#show-off-your-work", value=f"Finished a new video? Have a clip you made and love? Share them in here! You are allowed to post links to the video/still from other plattforms")
-    embed.add_field(name="#show-off-your-gear", value=f"Have you bought a new camera? Built a new epic rig? Cinemoded your loved lenses? Share them here")
-    embed.add_field(name="#grade-my-still", value=f"Have a Clip/Still you like and would like to get some diffrent views on grading it? Share it in here. Attach a BRAW or other high-quality file!")
-    embed.add_field(name="#bot-commands", value=f"Want to interact with one of our bots? Please paste them in here. Please only use _!bmd rule_ outside this channel")
-    embed.add_field(name="#off-topic", value=f"Got something to share that is not related to Blackmagic or you have a funny meme? In here please")
     await member.dm_channel.send(embed=channel_help())
 
 #--- PING PONG -------------------------------------------------------------------------------------------------------------------------------------------------
@@ -76,7 +70,7 @@ async def on_member_join(member):
 async def on_command(ctx):
     replays = [
         "Pong!", "No! I'm better than just writting 'Pong'", "Pong... ee. Hah you didn't expect this one. No seriously get yourself a warm blanket, it's cold outside!", "Stop pinging me! I want to sleep", "Dude stop pinging me! I'm presenting the new Blackmagic Not Anymore Pocket Cinema Camera 8k",
-        f"Better ping gooogle than me. My current ping to Google is: {random.randint(1,10)}", "You expected me to say Pong! And so I did...", f"Pingreeeeee {discord.utils.get(bot.get_guild(479297254528647188).emojis, name='PeepoPing')}",
+        f"Better ping gooogle than me. My current ping to Google is: {random.randint(1,10)}", "You expected me to say Pong! And so I did...", f"Pingreeeeee {emoji(GUILD,'PeepoPing')}",
         "Ping? Ping! I will tell you who I ping next!", "Ping, Pong, Ping, Pong, Ping, Pong, Ping, Pong... That's the last Ping Pong Championship summarized", "Ping!", "async def ping(ctx):\n    await ctx.channel.send('Pong')"
     ]
     await ctx.channel.send(random.choice(replays))
@@ -101,13 +95,13 @@ async def on_command(ctx, id: int):
     elif id == 4:
         msg = '4️⃣ No spamming of any kind. Please be polite to other users and do not be disruptive. Includes but is not limited to nicknames, text, emoji, links, images, EXCESSIVE CAPS, censor dodging (eg. use of spoilers), and spam mentioning @ role/user. Do not pointlessly ping Official Blackmagic Design Staff members for questions others can answer.'
     elif id == 5:
-        msg = '5️⃣ Content sharing is allowed.\nPost your work in {0} \nPost your gear in {1} \nKeep memes in {2} strictly.'.format(bot.get_channel(479297477590384665).mention, bot.get_channel(479297610851811329).mention, bot.get_channel(654069173831335937).mention)
+        msg = '5️⃣ Content sharing is allowed.\nPost your work in {0} \nPost your gear in {1} \nKeep memes in {2} strictly.'.format(bot.get_channel(YOURWORK).mention, bot.get_channel(YOURGEAR).mention, bot.get_channel(OFFTOPIC).mention)
     elif id == 6:
         msg = '6️⃣ No loopholes. A loophole is when you try to find technicalities in the rules so you don\'t get punished for what you did.  If you ever find any loopholes then report them to a staff member to be fixed.  Loopholes will not be tolerated and are strictly prohibited.'
     elif id == 7:
         msg = '7️⃣ Keep all your drama out of this server. If you have any sort of an issue with another member then you can simply block them and move on or make an attempt at making amends in private messages (DMs).  Anywhere but this server is the place for you to do this. Violation of this rule will most likely lead to a mute or ban.'
     else:
-        msg = '⚠️ Please follow the rules. You can find them in {0}'.format(bot.get_channel(624591866817413139).mention)
+        msg = '⚠️ Please follow the rules. You can find them in {0}'.format(bot.get_channel(RULES).mention)
     await ctx.channel.send(msg)
 
 #--- Channel help ----------------------------------------------------------------------------------------------------------------------------------------------
@@ -118,7 +112,7 @@ async def on_command(ctx):
 #--- Resolve ---------------------------------------------------------------------------------------------------------------------------------------------------
 def resolveEmoji():
     try:
-        return discord.utils.get(bot.get_guild(479297254528647188).emojis, name='resolve');
+        return discord.utils.get(bot.get_guild(GUILD).emojis, name='resolve');
     except:
         return ':resolve:'
 
