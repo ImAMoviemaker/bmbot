@@ -1,6 +1,6 @@
 """
 Blackmagic Design Discord Community bot
-Version 1.0.0
+Version 1.0.1
 Written by TimothyLH
 With additions by Dave Caruso
 
@@ -8,6 +8,7 @@ ChangeLog:
 v1.0.0
 Introduces a basic set of functions
 """
+VERSIONNR = "1.0.1"
 #Import Libraries and Env-Variables
 import os
 import random
@@ -19,7 +20,7 @@ from dotenv import load_dotenv
 
 #Import Custom Code
 from bmd_crawler.interface import allVisibleResolveVersionNames,getResolveVersionData,getResolveLatestData,allResolveVersionNames,allVisibleFusionVersionNames,getFusionVersionData,getFusionLatestData,allFusionVersionNames
-from functions import HelpFunctions.*
+from functions import HelpFunctions
 from const import *
 
 print('Trying to start')
@@ -57,7 +58,7 @@ async def on_ready():
 async def on_member_join(member):
     await bot.get_channel(RULES).send(
         '{0} {1.mention}, welcome to the Blackmagic Community! Please read the rules and assign yourself {2}. Type _!bmd help_ and _!bmd channels_ to get a quick introduction'
-        .format(f.emoji(GUILD,'bmd'),
+        .format(f.emoji('bmd'),
         member,
         bot.get_channel(ROLES).mention),
         delete_after = float("30")
@@ -73,7 +74,7 @@ async def on_member_join(member):
 async def on_command(ctx):
     replays = [
         "Pong!", "No! I'm better than just writting 'Pong'", "Pong... ee. Hah you didn't expect this one. No seriously get yourself a warm blanket, it's cold outside!", "Stop pinging me! I want to sleep", "Dude stop pinging me! I'm presenting the new Blackmagic Not Anymore Pocket Cinema Camera 8k",
-        f"Better ping gooogle than me. My current ping to Google is: {random.randint(1,10)}", "You expected me to say Pong! And so I did...", f"Pingreeeeee {f.emoji(GUILD,'PeepoPing')}",
+        f"Better ping gooogle than me. My current ping to Google is: {random.randint(1,10)}", "You expected me to say Pong! And so I did...", f"Pingreeeeee {f.emoji('PeepoPing')}",
         "Ping? Ping! I will tell you who I ping next!", "Ping, Pong, Ping, Pong, Ping, Pong, Ping, Pong... That's the last Ping Pong Championship summarized", "Ping!", "async def ping(ctx):\n    await ctx.channel.send('Pong')"
     ]
     await ctx.channel.send(random.choice(replays))
@@ -231,7 +232,7 @@ async def on_command(ctx):
     embed = discord.Embed(title="Blackmagic Bot Statistics", color=0xff8000)
     embed.add_field(name='System Usage:', value=f'CPU: {psutil.cpu_percent()} RAM: {psutil.virtual_memory()[2]}')
     embed.add_field(name='Codeshare:', value='https://github.com/timhaettich/bmd')
-    embed.add_field(name='Version::', value='v1.0.0 This bot is still in Development.')
+    embed.add_field(name='Version::', value=f'v{VERSIONNR} This bot is still in Development.')
     embed.add_field(name='Member count:', value='{0}'.format(bot.get_guild(479297254528647188).member_count),inline="false")
     embed.add_field(name='Bot written by:', value='This bot was written by @TimothyLH, additional features were contributed by @dave. This bot is based on discord.py', inline="false")
     await ctx.send(embed=embed)
