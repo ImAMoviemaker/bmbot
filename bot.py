@@ -19,7 +19,7 @@ from dotenv import load_dotenv
 
 #Import Custom Code
 from bmd_crawler.interface import allVisibleResolveVersionNames,getResolveVersionData,getResolveLatestData,allResolveVersionNames,allVisibleFusionVersionNames,getFusionVersionData,getFusionLatestData,allFusionVersionNames
-from functions import channel_help,emoji
+from functions import HelpFunctions
 from const import *
 
 print('Trying to start')
