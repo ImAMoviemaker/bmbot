@@ -38,8 +38,6 @@ print(GUILD)
 #Create bot
 from discord.ext import commands
 
-#Get help-functions
-def f = HelpFunction()
 bot = commands.Bot(command_prefix=os.getenv('BOT_PREFIX') + " ")
 
 #--- START UP CODE ---------------------------------------------------------------------------------------------------------------------------------------------
@@ -222,7 +220,6 @@ async def on_command(ctx, user: discord.Member):
 
     ]
     await ctx.send(random.choice(compliments) + " " + user.mention)
-    await ctx.
 
 #--- Give CPU and RAM Monitoring -------------------------------------------------------------------------------------------------------------------------------
 @bot.command(name='stats', help='Gives you the Status of the bot and server')
