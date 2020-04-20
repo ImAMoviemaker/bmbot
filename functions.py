@@ -21,10 +21,7 @@ class HelpFunctions:
         embed = discord.Embed(title="Channel Overview", description="See what each channel is for below:", color=0xff8000)
         embed.set_footer(text="Contact Staff for more informations")
         for ch in self.bot.get_guild(self.guild).channels:
-            print(ch.name)
-            if(isinstance(ch,discord.TextChannel)):
-                print(ch.name)
-                print(ch.topic)
+            if(isinstance(ch,discord.TextChannel) and ch.name and ch.topic):
                 embed.add_field(name=ch.name, value=ch.topic)
         return embed
 
