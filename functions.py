@@ -12,7 +12,7 @@ import discord
 
 class HelpFunctions:
     #Constructor
-    def __init__(bot):
+    def __init__(self,bot):
         self.bot = bot
 
     #Function to generate channel help embed

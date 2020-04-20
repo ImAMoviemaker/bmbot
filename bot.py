@@ -19,7 +19,7 @@ from dotenv import load_dotenv
 
 #Import Custom Code
 from bmd_crawler.interface import allVisibleResolveVersionNames,getResolveVersionData,getResolveLatestData,allResolveVersionNames,allVisibleFusionVersionNames,getFusionVersionData,getFusionLatestData,allFusionVersionNames
-from functions import HelpFunctions
+from functions import HelpFunctions.*
 from const import *
 
 print('Trying to start')
@@ -57,7 +57,7 @@ async def on_ready():
 async def on_member_join(member):
     await bot.get_channel(RULES).send(
         '{0} {1.mention}, welcome to the Blackmagic Community! Please read the rules and assign yourself {2}. Type _!bmd help_ and _!bmd channels_ to get a quick introduction'
-        .format(emoji(GUILD,'bmd'),
+        .format(f.emoji(GUILD,'bmd'),
         member,
         bot.get_channel(ROLES).mention),
         delete_after = float("30")
@@ -66,14 +66,14 @@ async def on_member_join(member):
     await member.dm_channel.send(
         f'Hi {member.name}, welcome to the Blackmagic Community! Please note that we use diffrent channels for diffrent things, you can see an overview below:'
     )
-    await member.dm_channel.send(embed=channel_help())
+    await member.dm_channel.send(embed=f.channel_help())
 
 #--- PING PONG -------------------------------------------------------------------------------------------------------------------------------------------------
 @bot.command(name="ping", description="Use this command to see if the bot is online")
 async def on_command(ctx):
     replays = [
         "Pong!", "No! I'm better than just writting 'Pong'", "Pong... ee. Hah you didn't expect this one. No seriously get yourself a warm blanket, it's cold outside!", "Stop pinging me! I want to sleep", "Dude stop pinging me! I'm presenting the new Blackmagic Not Anymore Pocket Cinema Camera 8k",
-        f"Better ping gooogle than me. My current ping to Google is: {random.randint(1,10)}", "You expected me to say Pong! And so I did...", f"Pingreeeeee {emoji(GUILD,'PeepoPing')}",
+        f"Better ping gooogle than me. My current ping to Google is: {random.randint(1,10)}", "You expected me to say Pong! And so I did...", f"Pingreeeeee {f.emoji(GUILD,'PeepoPing')}",
         "Ping? Ping! I will tell you who I ping next!", "Ping, Pong, Ping, Pong, Ping, Pong, Ping, Pong... That's the last Ping Pong Championship summarized", "Ping!", "async def ping(ctx):\n    await ctx.channel.send('Pong')"
     ]
     await ctx.channel.send(random.choice(replays))
@@ -110,7 +110,7 @@ async def on_command(ctx, id: int):
 #--- Channel help ----------------------------------------------------------------------------------------------------------------------------------------------
 @bot.command(name='channels', help='Displays you a summary of all channels and what they do')
 async def on_command(ctx):
-    await ctx.send(embed=channel_help())
+    await ctx.send(embed=f.channel_help())
 
 #--- Resolve ---------------------------------------------------------------------------------------------------------------------------------------------------
 def resolveEmoji():
