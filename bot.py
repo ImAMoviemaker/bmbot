@@ -236,6 +236,8 @@ async def on_command(ctx):
     embed.add_field(name='Member count:', value='{0}'.format(bot.get_guild(479297254528647188).member_count),inline="false")
     embed.add_field(name='Bot written by:', value='This bot was written by @TimothyLH, additional features were contributed by @dave. This bot is based on discord.py', inline="false")
     await ctx.send(embed=embed)
+    #Reload Crawler Data, this is placed here, so it is called once in a while
+    reloadData()
 
 #--- Auto Commands --------------------------------------------------------------------------------------------------------------------------------------------
 #--- Role asigning --------------------------------------------------------------------------------------------------------------------------------------------
